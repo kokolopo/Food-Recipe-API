@@ -6,7 +6,8 @@ const { create, fetchByRecipeId } = commentModel;
 
 const commentController = {
   addComment: async (req, res) => {
-    const { comment, recipe_id } = req.body;
+    const { recipe_id } = req.params;
+    const { comment } = req.body;
     const token = req.cookies.refreshToken;
     const user = jwt.decode(token, { complete: true });
 
