@@ -85,6 +85,19 @@ const recipeModel = {
       );
     });
   },
+
+  paginate: (perPage, page) => {
+    const offset = (page - 1) * perPage;
+    return new Promise((resolve, reject) => {
+      DB.query(
+        `select * from food_recipes.recipes limit ${perPage} offset ${offset}`,
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result.rows);
+        }
+      );
+    });
+  },
 };
 
 export default recipeModel;
