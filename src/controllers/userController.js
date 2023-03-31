@@ -46,16 +46,16 @@ const userController = {
 
       if (!match) return res.status(400).json({ msg: "password salah!" });
 
-      const { id, name } = user;
+      const { id, name, role } = user;
       const accessToken = jwt.sign(
-        { id, name, email },
+        { id, name, email, role },
         process.env.ACCESS_TOKEN,
         {
-          expiresIn: "25s",
+          expiresIn: "1d",
         }
       );
       const refreshToken = jwt.sign(
-        { id, name, email },
+        { id, name, email, role },
         process.env.REFRESH_TOKEN,
         {
           expiresIn: "1d",
@@ -127,7 +127,7 @@ const userController = {
           { id, name, email },
           process.env.ACCESS_TOKEN,
           {
-            expiresIn: "25s",
+            expiresIn: "1d",
           }
         );
         res

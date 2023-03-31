@@ -2,7 +2,7 @@ import commentModel from "../models/commentModel.js";
 import jwt from "jsonwebtoken";
 import { responseAPI } from "../helper/responseFormatter.js";
 
-const { create, fetchByRecipeId } = commentModel;
+const { create, fetchByRecipeId, fetchAll } = commentModel;
 
 const commentController = {
   addComment: async (req, res) => {
@@ -26,6 +26,15 @@ const commentController = {
     try {
       const data = await fetchByRecipeId(recipe_id);
       res.status(200).json(responseAPI("data komentar", data));
+    } catch (error) {
+      res.status(500).json(responseAPI("server error", error));
+    }
+  },
+
+  listComments: async (req, res) => {
+    try {
+      const comments = await fetchAll();
+      res.status(200).json(responseAPI("daftar komentar", comments));
     } catch (error) {
       res.status(500).json(responseAPI("server error", error));
     }

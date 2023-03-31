@@ -27,6 +27,20 @@ const commentModel = {
       );
     });
   },
+
+  fetchAll: () => {
+    return new Promise((resolve, reject) => {
+      DB.query(
+        `SELECT u.name, c.*
+        FROM food_recipes.comments c
+        LEFT JOIN food_recipes.users u ON c.user_id = u.id`,
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result.rows);
+        }
+      );
+    });
+  },
 };
 
 export default commentModel;

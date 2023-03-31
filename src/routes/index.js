@@ -11,14 +11,14 @@ import {
   addCommentSchema,
 } from "../helper/validationScema.js";
 import { validate } from "../middleware/validation.js";
-import verifyToken from "../middleware/verifyToken.js";
+import { verifyToken, isAdmin, isUser } from "../middleware/verifyToken.js";
 
 const { register, login, resetPassword, editProfile, refreshToken, logout } =
   userController;
 const { addRecipe, listRecipe, recipe, updateRecipe, removeRecipe } =
   recipeController;
 const { listSaved, saved } = savedRecipeController;
-const { addComment, recipeComments } = commentController;
+const { addComment, recipeComments, listComments } = commentController;
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ router.get("/token", refreshToken);
 router.delete("/logout", logout);
 
 router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe);
-router.get("/recipes", verifyToken, listRecipe);
+router.get("/recipes", isUser, listRecipe);
 router.get("/recipes/:recipe_id", verifyToken, recipe);
 router.put("/recipes/:recipe_id", verifyToken, updateRecipe);
 router.delete("/recipes/:recipe_id", verifyToken, removeRecipe);
@@ -45,5 +45,6 @@ router.post(
   addComment
 );
 router.get("/comments/:recipe_id", verifyToken, recipeComments);
+router.get("/comments", isAdmin, listComments);
 
 export default router;
