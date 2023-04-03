@@ -4,11 +4,35 @@ const userModel = {
   create: (uuid, name, email, phone, password) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `INSERT INTO food_recipes.users (uuid, name, email, phone, password, image_url) 
-          VALUES ('${uuid}', '${name}','${email}','${phone}','${password}','image_url')`,
+        `INSERT INTO food_recipes.users (uuid, name, email, phone, password, image_url, role) 
+          VALUES ('${uuid}', '${name}','${email}','${phone}','${password}','default', 'user')`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);
+        }
+      );
+    });
+  },
+
+  findById: (id) => {
+    return new Promise((resolve, reject) => {
+      DB.query(
+        `SELECT * FROM food_recipes.users WHERE id = '${id}'`,
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result.rows[0]);
+        }
+      );
+    });
+  },
+
+  findAll: () => {
+    return new Promise((resolve, reject) => {
+      DB.query(
+        "SELECT uuid, name, email, phone, image_url, role FROM food_recipes.users",
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result.rows);
         }
       );
     });
@@ -38,10 +62,10 @@ const userModel = {
     });
   },
 
-  updatePhoto: (id, imageUrl) => {
+  updatePhoto: (refreshToken, imageUrl) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE food_recipes.users SET image_url = '${imageUrl}' WHERE id = '${id}'`,
+        `UPDATE food_recipes.users SET image_url = '${imageUrl}' WHERE refresh_token = '${refreshToken}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);

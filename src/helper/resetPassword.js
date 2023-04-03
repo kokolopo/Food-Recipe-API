@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import Mailjet from "node-mailjet";
 
-export const generateRandomPassword = (length) => {
+export const generateRandomString = (length) => {
   // Generate random bytes
   const buffer = crypto.randomBytes(length);
 

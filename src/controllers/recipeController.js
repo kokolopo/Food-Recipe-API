@@ -7,6 +7,9 @@ import {
   commentsFormatter,
 } from "../helper/responseFormatter.js";
 import commentModel from "../models/commentModel.js";
+import { MinioClient } from "../helper/objectStorage.js";
+import fs from "fs";
+import { generateRandomString } from "../helper/resetPassword.js";
 
 const { create, fetchAll, fetchById, upadte, remove } = recipeModel;
 
@@ -33,9 +36,9 @@ const recipeController = {
   },
 
   listRecipe: async (req, res) => {
-    const { title } = req.query;
+    const { title, category, perPage, page } = req.query;
     try {
-      const recipes = await fetchAll(title);
+      const recipes = await fetchAll(title, category, perPage, page);
       const data = recipesFormatter(recipes);
       res.status(200).json(responseAPI("list recipes", data));
     } catch (error) {
@@ -92,9 +95,31 @@ const recipeController = {
     }
   },
 
-  likedRecipe: async (req, res) => {},
-
-  savedRecipe: async (req, res) => {},
+  uploadFile: async (req, res) => {
+    // res.send(req.file);
+    // const objectName = req.file.originalname.split(".")[0];
+    const objectName = generateRandomString(10);
+    fs.readFile(req.file.path, function (err, data) {
+      if (err) {
+        return res.send(err);
+      }
+      const metaData = {
+        "Content-Type": "image/png, image/jpg, image/jpeg", // sesuaikan dengan jenis file gambar
+      };
+      MinioClient.putObject(
+        "foodimages",
+        "default",
+        data,
+        metaData,
+        function (err, etag) {
+          if (err) {
+            return res.send(err);
+          }
+          res.json({ isUploaded: true, etag });
+        }
+      );
+    });
+  },
 };
 
 export default recipeController;

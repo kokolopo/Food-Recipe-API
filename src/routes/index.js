@@ -12,32 +12,60 @@ import {
 } from "../helper/validationScema.js";
 import { validate } from "../middleware/validation.js";
 import { verifyToken, isAdmin, isUser } from "../middleware/verifyToken.js";
+import { uploadImages } from "../middleware/uploadImage.js";
+import recipeModel from "../models/recipeModel.js";
+import userModel from "../models/userModel.js";
+import checkRedis from "../middleware/redisCache.js";
 
-const { register, login, resetPassword, editProfile, refreshToken, logout } =
-  userController;
-const { addRecipe, listRecipe, recipe, updateRecipe, removeRecipe } =
-  recipeController;
+const {
+  register,
+  login,
+  resetPassword,
+  editProfile,
+  refreshToken,
+  logout,
+  uploadPhoto,
+  listUsers,
+  findById,
+} = userController;
+const {
+  addRecipe,
+  listRecipe,
+  recipe,
+  updateRecipe,
+  removeRecipe,
+  savedRecipe,
+} = recipeController;
 const { listSaved, saved } = savedRecipeController;
 const { addComment, recipeComments, listComments } = commentController;
 
 const router = express.Router();
 
+// redis
+router.get("/users/:id", checkRedis, isAdmin, findById);
+
+// user & auth
+router.get("/users", isAdmin, listUsers);
 router.post("/users", validate(registerSchema), register);
 router.post("/login", validate(loginSchema), login);
 router.put("/users", verifyToken, editProfile);
+router.post("/images", uploadImages.single("image"), uploadPhoto);
 router.post("/reset-password", validate(resetPasswordSchema), resetPassword);
 router.get("/token", refreshToken);
 router.delete("/logout", logout);
 
-router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe);
-router.get("/recipes", isUser, listRecipe);
+// recipes
+router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe); //pasang multer
+router.get("/recipes", verifyToken, listRecipe);
 router.get("/recipes/:recipe_id", verifyToken, recipe);
 router.put("/recipes/:recipe_id", verifyToken, updateRecipe);
 router.delete("/recipes/:recipe_id", verifyToken, removeRecipe);
 
+// saved
 router.post("/saved/:recipe_id", verifyToken, saved);
 router.get("/saved", verifyToken, listSaved);
 
+// comments
 router.post(
   "/comments/:recipe_id",
   validate(addCommentSchema),

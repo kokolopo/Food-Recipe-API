@@ -4,18 +4,28 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { responseAPI } from "../helper/responseFormatter.js";
 import {
-  generateRandomPassword,
+  generateRandomString,
   htmlTemplate,
   request,
 } from "../helper/resetPassword.js";
+import {
+  MinioClient,
+  uploadFile,
+  removeFile,
+} from "../helper/objectStorage.js";
+import recipeModel from "../models/recipeModel.js";
+import client from "../config/redis.js";
 
 const {
   create,
+  findAll,
   findByEmail,
   findByToken,
   updateToken,
   updateProfile,
   updatePassword,
+  findById,
+  updatePhoto,
 } = userModel;
 
 const userController = {
@@ -94,7 +104,7 @@ const userController = {
   resetPassword: async (req, res) => {
     const { email } = req.body;
 
-    const password = generateRandomPassword(12);
+    const password = generateRandomString(12);
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
     const tmplt = htmlTemplate(password);
@@ -153,6 +163,60 @@ const userController = {
     } catch (error) {
       res.status(500).json(responseAPI("server error", error));
     }
+  },
+
+  uploadPhoto: async (req, res) => {
+    try {
+      const refreshToken = req.cookies.refreshToken;
+      if (!refreshToken) return res.sendStatus(401);
+
+      const user = await findByToken(refreshToken);
+      if (!user) return res.sendStatus(204);
+
+      if (user.image_url !== "default") {
+        const err = removeFile(user.image_url);
+        if (err) return res.sendStatus(204);
+      }
+
+      const objectName = generateRandomString(10);
+      uploadFile(req.file.path, objectName);
+      await updatePhoto(refreshToken, objectName);
+      const presignedUrl = await MinioClient.presignedGetObject(
+        "foodimages",
+        objectName
+      );
+
+      res.status(200).json(responseAPI("upload photo berhasil", presignedUrl));
+    } catch (error) {
+      res.status(500).json(responseAPI("server error", error));
+    }
+  },
+
+  listUsers: async (req, res) => {
+    try {
+      const users = await findAll();
+      res.status(200).json(responseAPI("data users", users));
+    } catch (error) {
+      res.status(500).json(responseAPI("server error", error));
+    }
+  },
+
+  findById: async (req, res) => {
+    // const id = req.params.id;
+    findById(10)
+      .then((result) => {
+        const dataRedis = client.set(req.url, JSON.stringify(result), {
+          EX: 180,
+          NX: true,
+        });
+        res.send({
+          fromCache: false,
+          data: result,
+        });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   },
 };
 

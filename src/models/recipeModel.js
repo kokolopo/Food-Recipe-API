@@ -14,22 +14,17 @@ const recipeModel = {
     });
   },
 
-  fetchAll: (title = "") => {
-    let query;
-    if (title !== "") {
-      query = `SELECT r.*, c.category_name, u.name
-      FROM food_recipes.recipes r
-      LEFT JOIN food_recipes.categories c ON r.category_id = c.id
-      LEFT JOIN food_recipes.users u ON r.user_id = u.id
-      WHERE r.title LIKE '%${title}%'`;
-    } else {
-      query = `SELECT r.*, c.category_name, u.name
-      FROM food_recipes.recipes r
-      LEFT JOIN food_recipes.categories c ON r.category_id = c.id
-      LEFT JOIN food_recipes.users u ON r.user_id = u.id
-      ORDER BY liked DESC`;
-    }
+  fetchAll: (title = "", category = "", perPage = "", page = "") => {
+    const offset = (page - 1) * perPage;
+    let query =
+      "SELECT r.*, c.category_name, u.name FROM food_recipes.recipes r LEFT JOIN food_recipes.categories c ON r.category_id = c.id LEFT JOIN food_recipes.users u ON r.user_id = u.id ";
 
+    if (title !== "") query += `WHERE r.title LIKE '%${title}%'`;
+    if (category !== "") query += `WHERE r.category_id = '${category}'`;
+    if (perPage !== "" && page !== "")
+      query += `limit ${perPage} offset ${offset}`;
+
+    // console.log(query);
     return new Promise((resolve, reject) => {
       DB.query(query, (err, result) => {
         if (err) reject(err);
@@ -81,19 +76,6 @@ const recipeModel = {
         (err, result) => {
           if (err) reject(err);
           resolve(result);
-        }
-      );
-    });
-  },
-
-  paginate: (perPage, page) => {
-    const offset = (page - 1) * perPage;
-    return new Promise((resolve, reject) => {
-      DB.query(
-        `select * from food_recipes.recipes limit ${perPage} offset ${offset}`,
-        (err, result) => {
-          if (err) reject(err);
-          resolve(result.rows);
         }
       );
     });
