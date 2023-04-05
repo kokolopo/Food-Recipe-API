@@ -1,13 +1,13 @@
-// import redisClient from "../config/redis.js";
 import client from "../config/redis.js";
 
 // membuat fungsi middleware Redis
 const checkRedis = async (req, res, next) => {
+  const id = req.params.id;
+  const url = req.url;
   try {
-    const data = await client.get(req.url);
+    const data = await client.get(`${url}`);
 
     if (data) {
-      // result = ;
       res.send({
         fromCache: true,
         data: JSON.parse(data),

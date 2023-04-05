@@ -124,6 +124,27 @@ const userController = {
     }
   },
 
+  changePassword: async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
+    const token = req.cookies.refreshToken;
+    const credential = jwt.decode(token, { complete: true });
+
+    try {
+      const user = await findById(credential.payload.id);
+      const match = await bcrypt.compare(oldPassword, user.password);
+      if (!match) return res.status(400).json({ msg: "password lama salah!" });
+
+      await updatePassword(user.id, newPassword);
+      res
+        .status(200)
+        .json(
+          responseAPI("password berhasil diperbaharui", { isUpdated: true })
+        );
+    } catch (error) {
+      res.status(500).json(responseAPI("server error", error));
+    }
+  },
+
   refreshToken: async (req, res) => {
     try {
       const refreshToken = req.cookies.refreshToken;
@@ -202,10 +223,10 @@ const userController = {
   },
 
   findById: async (req, res) => {
-    // const id = req.params.id;
-    findById(10)
+    const id = req.params.id;
+    findById(id)
       .then((result) => {
-        const dataRedis = client.set(req.url, JSON.stringify(result), {
+        const dataRedis = client.set(`${req.url}`, JSON.stringify(result), {
           EX: 180,
           NX: true,
         });

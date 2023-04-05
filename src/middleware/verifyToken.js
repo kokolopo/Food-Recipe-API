@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import recipeModel from "../models/recipeModel.js";
 
 export const verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -38,4 +39,22 @@ export const isUser = (req, res, next) => {
   });
 };
 
-// export default verifyToken;
+export const isOwner = (req, res, next) => {
+  const token = req.headers["authorization"].split(" ")[1];
+
+  recipeModel
+    .fetchById(req.params.recipe_id)
+    .then((result) => {
+      jwt.verify(token, process.env.ACCESS_TOKEN, (err, decoded) => {
+        if (err) return res.sendStatus(403);
+        if (decoded.id !== result.user_id) {
+          return res.sendStatus(403);
+        }
+
+        next();
+      });
+    })
+    .catch((err) => {
+      return res.sendStatus(403).json(err);
+    });
+};

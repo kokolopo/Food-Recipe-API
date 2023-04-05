@@ -17,6 +17,12 @@ export const resetPasswordSchema = Joi.object().keys({
   email: Joi.string().email().required(),
 });
 
+export const changePasswordSchema = Joi.object().keys({
+  oldPassword: Joi.string().min(8).required(),
+  newPassword: Joi.string().min(8).required(),
+  confPassword: Joi.any().valid(Joi.ref("newPassword")).required(),
+});
+
 export const addRecipeSchema = Joi.object().keys({
   title: Joi.string().required(),
   ingredients: Joi.string().required(),

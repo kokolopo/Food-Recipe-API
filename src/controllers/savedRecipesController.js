@@ -14,14 +14,14 @@ const savedRecipeController = {
 
     try {
       const recipe = await recipeModel.fetchById(recipe_id);
-      if (!recipe[0]) return res.sendStatus(404);
+      if (!recipe) return res.sendStatus(404);
 
       const chek = await fetchByRecipeId(recipe_id, user.payload.id);
-      if (chek[0]) return res.sendStatus(400);
+      if (chek) return res.sendStatus(400);
 
       await create(recipe_id, user.payload.id);
-      const data = recipesFormatter(recipe);
-      res.status(201).json(responseAPI("recipe saved", data));
+      // const data = recipesFormatter(recipe);
+      return res.status(201).json(responseAPI("recipe saved", recipe));
     } catch (error) {
       res.status(500).json(responseAPI("server error", error));
     }

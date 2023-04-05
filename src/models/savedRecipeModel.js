@@ -32,26 +32,14 @@ const savedRecipeModel = {
   fetchByRecipeId: (recipe_id, user_id) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `select * from food_recipes.saved_recipes where recipe_id = '${recipe_id}' and user_id = '${user_id}'`,
+        `select * from food_recipes.saved_recipes where recipe_id = ${recipe_id} and user_id = ${user_id}`,
         (err, result) => {
           if (err) reject(err);
-          resolve(result.rows);
+          resolve(result.rows[0]);
         }
       );
     });
   },
-
-  //   remove: (id) => {
-  //     return new Promise((resolve, reject) => {
-  //       DB.query(
-  //         `DELETE FROM food_recipes.saved_recipes WHERE id = ${id}`,
-  //         (err, result) => {
-  //           if (err) reject(err);
-  //           resolve(result);
-  //         }
-  //       );
-  //     });
-  //   },
 };
 
 export default savedRecipeModel;

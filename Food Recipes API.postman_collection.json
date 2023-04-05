@@ -1,0 +1,2086 @@
+{
+	"info": {
+		"_postman_id": "b1602ff6-3fe0-41bc-bebc-0079b4d76033",
+		"name": "Food Recipes API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16295111"
+	},
+	"item": [
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "List Recipes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/recipes?perPage=6&page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "6"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Recipes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/recipes?perPage=6&page=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"recipes"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "6"
+										},
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "603"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25b-QwWppOPmnmkm4BMe2EVPFDFn/+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 11:00:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"list recipes\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"title\": \"Chicken cordon bleu\",\n            \"image_url\": \"image/url\",\n            \"category\": \"western\",\n            \"like\": 3\n        },\n        {\n            \"id\": 11,\n            \"title\": \"chickpea sandwich\",\n            \"image_url\": \"image/url\",\n            \"category\": \"western\",\n            \"like\": 4\n        },\n        {\n            \"id\": 12,\n            \"title\": \"Rosemary chicken\",\n            \"image_url\": \"image/url\",\n            \"category\": \"western\",\n            \"like\": 3\n        },\n        {\n            \"id\": 13,\n            \"title\": \"Makaroni schotel\",\n            \"image_url\": \"image/url\",\n            \"category\": \"western\",\n            \"like\": 9\n        },\n        {\n            \"id\": 9,\n            \"title\": \"lontong karie\",\n            \"image_url\": \"image/url\",\n            \"category\": \"makanan indonesia\",\n            \"like\": 3\n        },\n        {\n            \"id\": 14,\n            \"title\": \"resep rahasia mama\",\n            \"image_url\": \"undefined\",\n            \"category\": \"makanan indonesia\",\n            \"like\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/recipes/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Recipe",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/recipes/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"recipes",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "412"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19c-CgW16ll0X1tyOiCsZ/FKhtueo3Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 11:01:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil mendapatkan data\",\n    \"data\": {\n        \"id\": 5,\n        \"author\": \"fahmi hadi\",\n        \"title\": \"seblak\",\n        \"ingredients\": [\n            \"makaroni\",\n            \"minyak\",\n            \"telor\",\n            \"mie\",\n            \"sayuran\"\n        ],\n        \"image_url\": \"google.com/foods\",\n        \"video_url\": \"https://youtube.com\",\n        \"category\": \"makanan indonesia\",\n        \"like\": 8,\n        \"comments\": [\n            {\n                \"name\": \"new name\",\n                \"comment\": \"wah enak nih\"\n            },\n            {\n                \"name\": \"new name\",\n                \"comment\": \"wah enak mantap\"\n            },\n            {\n                \"name\": \"user baru\",\n                \"comment\": \"komntar viral\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Upadate Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"seblak ceker\",\r\n    \"ingredients\": \"makaroni,minyak,telor,mie,sayuran\",\r\n    \"category_id\": 1,\r\n    \"image_url\":\"google.com/foods\",\r\n    \"video_url\": \"https://youtube.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/recipes/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upadate Recipe",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"seblak ceker\",\r\n    \"ingredients\": \"makaroni,minyak,telor,mie,sayuran\",\r\n    \"category_id\": 1,\r\n    \"image_url\":\"google.com/foods\",\r\n    \"video_url\": \"https://youtube.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/recipes/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"recipes",
+										"5"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "205"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cd-BT0Sm0QBhjBvPuXOuXj8HAO3NG8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 11:46:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil memperbaharui resep\",\n    \"data\": {\n        \"title\": \"seblak ceker\",\n        \"ingredients\": \"makaroni,minyak,telor,mie,sayuran\",\n        \"category_id\": 1,\n        \"image_url\": \"google.com/foods\",\n        \"video_url\": \"https://youtube.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/recipes/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recipes",
+								"16"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove Recipe",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/recipes/16",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"recipes",
+										"16"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-6wgWAliyxb70xPBokdgFjqQhzpI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 11:48:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil menghapus resep\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Saved Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/saved/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"saved",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Saved Recipe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/saved/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"saved",
+										"12"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "314"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13a-WWfU4WsLQhbSYMSedxTKrELFSOY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 11:59:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"recipe saved\",\n    \"data\": {\n        \"id\": 12,\n        \"user_id\": 12,\n        \"title\": \"Rosemary chicken\",\n        \"ingredients\": \"ayam,jagung,seledri\",\n        \"image_url\": \"image/url\",\n        \"video_url\": \"video/url\",\n        \"liked\": 3,\n        \"created_at\": \"2023-04-02T15:49:05.165Z\",\n        \"category_id\": 2,\n        \"deleted_at\": null,\n        \"updated_at\": null,\n        \"category_name\": \"western\",\n        \"name\": \"user baru\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List of Saved Recipes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/saved",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"saved"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List of Saved Recipes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/saved",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"saved"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"87-exdOc36AKOUZwOxORUDbuCp1k9w\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:00:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"list of saved recipes\",\n    \"data\": [\n        {\n            \"id\": 12,\n            \"title\": \"Rosemary chicken\",\n            \"image_url\": \"image/url\",\n            \"category\": \"western\",\n            \"like\": 3\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"resep rahasia\",\r\n    \"ingredients\": \"nasi, minyak, telor\",\r\n    \"category_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Recipe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"resep rahasia\",\r\n    \"ingredients\": \"nasi, minyak, telor\",\r\n    \"category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/recipes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"recipes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "130"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"82-mc482912DG6JrpKoYeXzSE/frb0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 10:56:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil menambahkan resep baru\",\n    \"data\": {\n        \"title\": \"resep rahasia\",\n        \"ingredients\": \"nasi, minyak, telor\",\n        \"category_id\": 1\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"testing\",\r\n    \"email\": \"testing@gmail.com\",\r\n    \"phone\": \"08981238573\",\r\n    \"password\": \"password\",\r\n    \"confPassword\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"testing\",\r\n    \"email\": \"testing@gmail.com\",\r\n    \"phone\": \"08981238573\",\r\n    \"password\": \"password\",\r\n    \"confPassword\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-vsjoOhQ37zg/zBP5X/X1a45W7gQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:01:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"registrasi berhasil\",\n    \"data\": {\n        \"name\": \"testing\",\n        \"email\": \"testing@gmail.com\",\n        \"phone\": \"08981238573\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n\r\n{\r\n    \"email\": \"fahmi2@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"email\": \"userBaru@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJ1c2VyIGJhcnUiLCJlbWFpbCI6InVzZXJCYXJ1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgwNjkwOTc0LCJleHAiOjE2ODA3NzczNzR9.GZkyAl_E-FeEPdoYYWItItiy0SY5LIQ1pNoq5R6cKdU; Max-Age=86400; Path=/; Expires=Thu, 06 Apr 2023 10:36:14 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"126-PnJBTkJm/3hq2la63jQzq162IEw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 10:36:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"login berhasil\",\n    \"data\": {\n        \"name\": \"user baru\",\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJ1c2VyIGJhcnUiLCJlbWFpbCI6InVzZXJCYXJ1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgwNjkwOTc0LCJleHAiOjE2ODA3NzczNzR9.dXUzppQRLWCvX-8fTjzu93-nsjk5ILICAVRs0Uple9Q\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kokolopo321@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kokolopo321@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/reset-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"reset-password"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-JALp9YXUt8w3mZEcG8RTDhsSpOs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:02:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"password berhasil diperbaharui\",\n    \"data\": \"silahkan cek email!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-BqY7EAGLDGPwGoyw68SFQw9/Oa0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:02:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"refresh token berhasil\",\n    \"data\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJpYXQiOjE2ODA2OTYxNDgsImV4cCI6MTY4MDc4MjU0OH0.-8rW00fh7Dg4piXdIYR9rvHh7iNChhlZj_bqCtJe1QE\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-K0QvSq3VVdn9eYxNE/a3Kp9rrZg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:31:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil logout\",\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Add Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"comment\":\"komntar viral baru\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/comments/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"comments",
+								"12"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n    \"comment\":\"komntar viral baru\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/comments/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"comments",
+										"12"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-NjxyUjUCE/IrNmiQw3v9EWlFnm8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:03:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil menambahkan komentar\",\n    \"data\": \"komntar viral baru\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Read Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/comments/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"comments",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Read Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/comments/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"comments",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "506"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fa-HhmDbGE23SU5g2t8sX4HfROE3+0\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:03:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"data komentar\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 11,\n            \"comment\": \"wah enak nih\",\n            \"created_at\": \"2023-03-26T12:46:04.237Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5,\n            \"name\": \"new name\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 11,\n            \"comment\": \"wah enak mantap\",\n            \"created_at\": \"2023-03-26T13:19:32.356Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5,\n            \"name\": \"new name\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 12,\n            \"comment\": \"komntar viral\",\n            \"created_at\": \"2023-03-26T21:26:30.122Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5,\n            \"name\": \"user baru\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "671"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29f-wljChlLfg3KpA7FuPU3Q4N/3u+U\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:04:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"daftar komentar\",\n    \"data\": [\n        {\n            \"name\": \"new name\",\n            \"id\": 1,\n            \"user_id\": 11,\n            \"comment\": \"wah enak nih\",\n            \"created_at\": \"2023-03-26T12:46:04.237Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5\n        },\n        {\n            \"name\": \"new name\",\n            \"id\": 2,\n            \"user_id\": 11,\n            \"comment\": \"wah enak mantap\",\n            \"created_at\": \"2023-03-26T13:19:32.356Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5\n        },\n        {\n            \"name\": \"user baru\",\n            \"id\": 3,\n            \"user_id\": 12,\n            \"comment\": \"komntar viral\",\n            \"created_at\": \"2023-03-26T21:26:30.122Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 5\n        },\n        {\n            \"name\": \"fahmi hadi\",\n            \"id\": 4,\n            \"user_id\": 4,\n            \"comment\": \"komntar viral baru\",\n            \"created_at\": \"2023-04-05T05:03:27.279Z\",\n            \"updated_at\": null,\n            \"deleted_at\": null,\n            \"recipe_id\": 12\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Upload Photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/LENOVO/OneDrive/Pictures/1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/images",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload Photo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/OneDrive/Pictures/1.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:4000/images",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"images"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "358"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"166-Bk0MnS9v6hjv9zg4MWFquO5veIg\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:05:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"upload photo berhasil\",\n    \"data\": \"https://is3.cloudhost.id/foodimages/s4nt7/RhuQ?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=57JUVUQPDFPAGDLQTYA2%2F20230405%2Fdefault%2Fs3%2Faws4_request&X-Amz-Date=20230405T120542Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2b310030c2d6ca0e1d90ee6be387b1703a87d404e919510e21365814005b20b9\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"fahmi ok new\",\r\n    \"email\": \"fahmi2@gmail.com\",\r\n    \"phone\": \"087646754123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"fahmi ok new\",\r\n    \"email\": \"fahmi2@gmail.com\",\r\n    \"phone\": \"087646754123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-b8EXRsLGhPx+ynNj5pX80nFNqbI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:07:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"berhasil memperbaharui profile\",\n    \"data\": {\n        \"isUpdated\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "951"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b7-rMYWBUwY8s+Gl+gMT+K8qQiOB2M\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:07:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"data users\",\n    \"data\": [\n        {\n            \"uuid\": \"1634764b-c5dd-4c7b-a663-33e219e07984\",\n            \"name\": \"user baru\",\n            \"email\": \"userBaru@gmail.com\",\n            \"phone\": \"08981238573\",\n            \"image_url\": \"default\",\n            \"role\": \"user\"\n        },\n        {\n            \"uuid\": \"0c71fe36-fec7-45b4-9236-5ff49455d322\",\n            \"name\": \"testing\",\n            \"email\": \"testing@gmail.com\",\n            \"phone\": \"08981238573\",\n            \"image_url\": \"default\",\n            \"role\": \"user\"\n        },\n        {\n            \"uuid\": \"f1704ff4-67b6-4807-a84c-4b9eb74ea974\",\n            \"name\": \"new name\",\n            \"email\": \"kokolopo321@gmail.com\",\n            \"phone\": \"087646754123\",\n            \"image_url\": \"default\",\n            \"role\": \"user\"\n        },\n        {\n            \"uuid\": \"12b634d3-bfa2-4ba2-862e-635f7cc025b8\",\n            \"name\": \"fahmi ok new\",\n            \"email\": \"fahmi2@gmail.com\",\n            \"phone\": \"087646754123\",\n            \"image_url\": \"s4nt7/RhuQ\",\n            \"role\": \"admin\"\n        },\n        {\n            \"uuid\": \"f124787c-c7c0-451f-aed8-0cabd11d5010\",\n            \"name\": \"user 2\",\n            \"email\": \"user2@gmail.com\",\n            \"phone\": \"08761452374\",\n            \"image_url\": \"default\",\n            \"role\": \"user\"\n        },\n        {\n            \"uuid\": \"7b14c134-8cbb-47b7-bdce-e5c1f4c58e23\",\n            \"name\": \"user 1\",\n            \"email\": \"user1@gmail.com\",\n            \"phone\": \"08761452374\",\n            \"image_url\": \"default\",\n            \"role\": \"user\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "redis",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/users/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "redis",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/users/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"users",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14e-8donuOQIbuNEdLTSJ763uiGQkew\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 10:47:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"fromCache\": true,\n    \"data\": {\n        \"id\": 10,\n        \"uuid\": \"f124787c-c7c0-451f-aed8-0cabd11d5010\",\n        \"name\": \"user 2\",\n        \"email\": \"user2@gmail.com\",\n        \"phone\": \"08761452374\",\n        \"password\": \"$2b$10$MNIepjc2hhdUdhGVFEzD/.5UA13BUd2UKdC8QeoAGgXgozjZlGbra\",\n        \"image_url\": \"default\",\n        \"refresh_token\": null,\n        \"created_at\": \"2023-03-25T06:37:16.835Z\",\n        \"updated_at\": null,\n        \"role\": \"user\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibmFtZSI6ImZhaG1pIGhhZGkiLCJlbWFpbCI6ImZhaG1pMkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODA2OTEwMzQsImV4cCI6MTY4MDc3NzQzNH0.kIRBjMIs88g4ZEgUv-z7IsUdV38e5yjYltlmpSaE2Xo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"password\",\r\n    \"newPassword\": \"password123\",\r\n    \"confPassword\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/passwords",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"passwords"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oldPassword\": \"password\",\r\n    \"newPassword\": \"password123\",\r\n    \"confPassword\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/passwords",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"passwords"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:4000"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-fVJHzNx4K22oEIqfZ3ISP1DCeuU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 05 Apr 2023 12:33:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"password berhasil diperbaharui\",\n    \"data\": {\n        \"isUpdated\": true\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

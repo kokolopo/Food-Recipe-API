@@ -9,9 +9,15 @@ import {
   resetPasswordSchema,
   addRecipeSchema,
   addCommentSchema,
+  changePasswordSchema,
 } from "../helper/validationScema.js";
 import { validate } from "../middleware/validation.js";
-import { verifyToken, isAdmin, isUser } from "../middleware/verifyToken.js";
+import {
+  verifyToken,
+  isAdmin,
+  isUser,
+  isOwner,
+} from "../middleware/verifyToken.js";
 import { uploadImages } from "../middleware/uploadImage.js";
 import recipeModel from "../models/recipeModel.js";
 import userModel from "../models/userModel.js";
@@ -27,6 +33,7 @@ const {
   uploadPhoto,
   listUsers,
   findById,
+  changePassword,
 } = userController;
 const {
   addRecipe,
@@ -51,15 +58,21 @@ router.post("/login", validate(loginSchema), login);
 router.put("/users", verifyToken, editProfile);
 router.post("/images", uploadImages.single("image"), uploadPhoto);
 router.post("/reset-password", validate(resetPasswordSchema), resetPassword);
+router.put(
+  "/passwords",
+  validate(changePasswordSchema),
+  verifyToken,
+  changePassword
+);
 router.get("/token", refreshToken);
 router.delete("/logout", logout);
 
 // recipes
-router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe); //pasang multer
+router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe);
 router.get("/recipes", verifyToken, listRecipe);
 router.get("/recipes/:recipe_id", verifyToken, recipe);
-router.put("/recipes/:recipe_id", verifyToken, updateRecipe);
-router.delete("/recipes/:recipe_id", verifyToken, removeRecipe);
+router.put("/recipes/:recipe_id", isOwner, updateRecipe);
+router.delete("/recipes/:recipe_id", isOwner, removeRecipe);
 
 // saved
 router.post("/saved/:recipe_id", verifyToken, saved);

@@ -17,7 +17,7 @@ const userModel = {
   findById: (id) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `SELECT * FROM food_recipes.users WHERE id = '${id}'`,
+        `SELECT * FROM food_recipes.users WHERE id = ${id}`,
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows[0]);
