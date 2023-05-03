@@ -8,6 +8,9 @@ const DB = new pg.Pool({
   password: process.env.POSTGRESQL_PASSWORD,
   database: process.env.POSTGRESQL_DATABASE,
   port: process.env.POSTGRESQL_PORT,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 export default DB;

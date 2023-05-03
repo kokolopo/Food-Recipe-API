@@ -19,8 +19,6 @@ import {
   isOwner,
 } from "../middleware/verifyToken.js";
 import { uploadImages } from "../middleware/uploadImage.js";
-import recipeModel from "../models/recipeModel.js";
-import userModel from "../models/userModel.js";
 import checkRedis from "../middleware/redisCache.js";
 
 const {
