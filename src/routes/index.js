@@ -39,12 +39,16 @@ const {
   recipe,
   updateRecipe,
   removeRecipe,
-  savedRecipe,
+  save,
+  myRecipes,
 } = recipeController;
 const { listSaved, saved } = savedRecipeController;
 const { addComment, recipeComments, listComments } = commentController;
 
 const router = express.Router();
+
+//test
+router.post("/save", uploadImages.single("image"), save);
 
 // redis
 router.get("/users/:id", checkRedis, isAdmin, findById);
@@ -66,11 +70,18 @@ router.get("/token", refreshToken);
 router.delete("/logout", logout);
 
 // recipes
-router.post("/recipes", validate(addRecipeSchema), verifyToken, addRecipe);
-router.get("/recipes", verifyToken, listRecipe);
-router.get("/recipes/:recipe_id", verifyToken, recipe);
+router.post(
+  "/recipes",
+  uploadImages.single("image"),
+  validate(addRecipeSchema),
+  verifyToken,
+  addRecipe
+);
+router.get("/recipes", listRecipe);
+router.get("/recipes/:recipe_id", recipe);
 router.put("/recipes/:recipe_id", isOwner, updateRecipe);
 router.delete("/recipes/:recipe_id", isOwner, removeRecipe);
+router.get("/myrecipes", myRecipes);
 
 // saved
 router.post("/saved/:recipe_id", verifyToken, saved);

@@ -49,6 +49,18 @@ const recipeModel = {
     });
   },
 
+  fetchByUserId: (user_id) => {
+    return new Promise((resolve, reject) => {
+      DB.query(
+        `SELECT * FROM food_recipes.recipes WHERE user_id = ${user_id}`,
+        (err, result) => {
+          if (err) reject(err);
+          resolve(result.rows);
+        }
+      );
+    });
+  },
+
   upadte: (
     recipe_id,
     title,

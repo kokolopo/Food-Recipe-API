@@ -4,7 +4,7 @@ const userModel = {
   create: (uuid, name, email, phone, password) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `INSERT INTO users (uuid, name, email, phone, password, image_url, role) 
+        `INSERT INTO food_recipes.users (uuid, name, email, phone, password, image_url, role) 
           VALUES ('${uuid}', '${name}','${email}','${phone}','${password}','default', 'user')`,
         (err, result) => {
           if (err) reject(err);
@@ -39,19 +39,9 @@ const userModel = {
   },
 
   findByEmail: (email) => {
-    // return new Promise((resolve, reject) => {
-    //   DB.query(
-    //     `SELECT * FROM food_recipes.users WHERE email = '${email}'`,
-    //     (err, result) => {
-    //       if (err) reject(err);
-    //       resolve(result.rows[0]);
-    //     }
-    //   );
-    // });
-
     return new Promise((resolve, reject) => {
       DB.query(
-        `SELECT * FROM users WHERE email = '${email}'`,
+        `SELECT * FROM food_recipes.users WHERE email = '${email}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows[0]);
@@ -109,18 +99,9 @@ const userModel = {
   },
 
   updateToken: (id, token) => {
-    // return new Promise((resolve, reject) => {
-    //   DB.query(
-    //     `UPDATE food_recipes.users SET refresh_token = '${token}', updated_at = now() WHERE id = '${id}'`,
-    //     (err, result) => {
-    //       if (err) reject(err);
-    //       resolve(result);
-    //     }
-    //   );
-    // });
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE users SET refresh_token = '${token}', updated_at = now() WHERE id = '${id}'`,
+        `UPDATE food_recipes.users SET refresh_token = '${token}', updated_at = now() WHERE id = '${id}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);

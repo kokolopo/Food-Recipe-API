@@ -27,6 +27,7 @@ export const addRecipeSchema = Joi.object().keys({
   title: Joi.string().required(),
   ingredients: Joi.string().required(),
   category_id: Joi.number().required(),
+  video_url: Joi.string().required(),
 });
 
 export const addCommentSchema = Joi.object().keys({

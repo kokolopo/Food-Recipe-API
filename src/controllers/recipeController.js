@@ -7,29 +7,56 @@ import {
   commentsFormatter,
 } from "../helper/responseFormatter.js";
 import commentModel from "../models/commentModel.js";
-import { MinioClient } from "../helper/objectStorage.js";
-import fs from "fs";
+import {
+  MinioClient,
+  uploadFile,
+  removeFile,
+} from "../helper/objectStorage.js";
 import { generateRandomString } from "../helper/resetPassword.js";
 
-const { create, fetchAll, fetchById, upadte, remove } = recipeModel;
+const { create, fetchAll, fetchById, upadte, remove, fetchByUserId } =
+  recipeModel;
 
 const recipeController = {
+  save: (req, res) => {
+    res.json({ file: req.file.path, text: req.body });
+  },
+
   addRecipe: async (req, res) => {
-    const { title, ingredients, category_id, image_url, video_url } = req.body;
+    const { title, ingredients, category_id, video_url } = req.body;
     const token = req.cookies.refreshToken;
+    if (!token) {
+      res.status(400).json({ msg: "g ada refreshToken!" });
+      return;
+    }
     const user = jwt.decode(token, { complete: true });
+
     try {
+      const image_url = generateRandomString(10);
+      uploadFile(req.file.path, image_url);
+
+      const presignedUrl = await MinioClient.presignedGetObject(
+        "foodimages",
+        image_url
+      );
+
       await create(
         user.payload.id,
         title,
         ingredients,
         category_id,
-        image_url,
+        presignedUrl,
         video_url
       );
+
+      const data = {
+        data: req.body,
+        image: presignedUrl,
+      };
+
       res
         .status(201)
-        .json(responseAPI("berhasil menambahkan resep baru", req.body));
+        .json(responseAPI("berhasil menambahkan resep baru", data));
     } catch (error) {
       res.status(400).json({ msg: "gagal tambah resep!", error });
     }
@@ -95,31 +122,49 @@ const recipeController = {
     }
   },
 
-  uploadFile: async (req, res) => {
-    // res.send(req.file);
-    // const objectName = req.file.originalname.split(".")[0];
-    const objectName = generateRandomString(10);
-    fs.readFile(req.file.path, function (err, data) {
-      if (err) {
-        return res.send(err);
-      }
-      const metaData = {
-        "Content-Type": "image/png, image/jpg, image/jpeg", // sesuaikan dengan jenis file gambar
-      };
-      MinioClient.putObject(
-        "foodimages",
-        "default",
-        data,
-        metaData,
-        function (err, etag) {
-          if (err) {
-            return res.send(err);
-          }
-          res.json({ isUploaded: true, etag });
-        }
-      );
-    });
+  myRecipes: async (req, res) => {
+    const token = req.cookies.refreshToken;
+    if (!token) {
+      res.status(400).json({ msg: "g ada refreshToken!" });
+      return;
+    }
+    const user = jwt.decode(token, { complete: true });
+
+    try {
+      const recipes = await fetchByUserId(user.payload.id);
+      const data = recipesFormatter(recipes);
+      res.status(200).json(responseAPI("list recipes", data));
+    } catch (error) {
+      res.status(400).json({ msg: "gagal mengambil resep!", error });
+    }
   },
+
+  // uploadFile: async (req, res) => {
+  //   res.send(req.file);
+  //   const objectName = req.file.originalname.split(".")[0];
+
+  //   const objectName = generateRandomString(10);
+  //   fs.readFile(req.file.path, function (err, data) {
+  //     if (err) {
+  //       return res.send(err);
+  //     }
+  //     const metaData = {
+  //       "Content-Type": "image/png, image/jpg, image/jpeg", // sesuaikan dengan jenis file gambar
+  //     };
+  //     MinioClient.putObject(
+  //       "foodimages",
+  //       "default",
+  //       data,
+  //       metaData,
+  //       function (err, etag) {
+  //         if (err) {
+  //           return res.send(err);
+  //         }
+  //         res.json({ isUploaded: true, etag });
+  //       }
+  //     );
+  //   });
+  // },
 };
 
 export default recipeController;
