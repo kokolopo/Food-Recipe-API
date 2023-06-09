@@ -97,4 +97,4 @@ router.post(
 router.get("/comments/:recipe_id", verifyToken, recipeComments);
 router.get("/comments", isAdmin, listComments);
 
-export default router;
+module.exports = { router };
