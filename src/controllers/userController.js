@@ -1,20 +1,20 @@
-import userModel from "../models/userModel.js";
-import { v4 as uuidv4 } from "uuid";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { responseAPI } from "../helper/responseFormatter.js";
-import {
+const userModel = require("../models/userModel.js");
+const { v4 } = require("uuid");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { responseAPI } = require("../helper/responseFormatter.js");
+const {
   generateRandomString,
   htmlTemplate,
   request,
-} from "../helper/resetPassword.js";
-import {
+} = require("../helper/resetPassword.js");
+const {
   MinioClient,
   uploadFile,
   removeFile,
-} from "../helper/objectStorage.js";
-import recipeModel from "../models/recipeModel.js";
-import client from "../config/redis.js";
+} = require("../helper/objectStorage.js");
+const recipeModel = require("../models/recipeModel.js");
+const client = require("../config/redis.js");
 
 const {
   create,
@@ -31,7 +31,7 @@ const {
 const userController = {
   register: async (req, res) => {
     const { name, email, phone, password, confPassword } = req.body;
-    const uuid = uuidv4();
+    const uuid = v4();
 
     if (password !== confPassword)
       return res.status(400).json({ msg: "password invalid" });
@@ -241,4 +241,4 @@ const userController = {
   },
 };
 
-export default userController;
+module.exports = userController;

@@ -1,7 +1,10 @@
-import { recipesFormatter, responseAPI } from "../helper/responseFormatter.js";
-import recipeModel from "../models/recipeModel.js";
-import savedRecipeModel from "../models/savedRecipeModel.js";
-import jwt from "jsonwebtoken";
+const {
+  recipesFormatter,
+  responseAPI,
+} = require("../helper/responseFormatter.js");
+const recipeModel = require("../models/recipeModel.js");
+const savedRecipeModel = require("../models/savedRecipeModel.js");
+const jwt = require("jsonwebtoken");
 
 const { create, fetchAll, fetchByRecipeId } = savedRecipeModel;
 
@@ -40,4 +43,4 @@ const savedRecipeController = {
   },
 };
 
-export default savedRecipeController;
+module.exports = savedRecipeController;

@@ -1,18 +1,18 @@
-import recipeModel from "../models/recipeModel.js";
-import jwt from "jsonwebtoken";
-import {
+const recipeModel = require("../models/recipeModel.js");
+const jwt = require("jsonwebtoken");
+const {
   responseAPI,
   recipesFormatter,
   recipeFormatter,
   commentsFormatter,
-} from "../helper/responseFormatter.js";
-import commentModel from "../models/commentModel.js";
-import {
+} = require("../helper/responseFormatter.js");
+const commentModel = require("../models/commentModel.js");
+const {
   MinioClient,
   uploadFile,
   removeFile,
-} from "../helper/objectStorage.js";
-import { generateRandomString } from "../helper/resetPassword.js";
+} = require("../helper/objectStorage.js");
+const { generateRandomString } = require("../helper/resetPassword.js");
 
 const { create, fetchAll, fetchById, upadte, remove, fetchByUserId } =
   recipeModel;
@@ -167,4 +167,4 @@ const recipeController = {
   // },
 };
 
-export default recipeController;
+module.exports = recipeController;
