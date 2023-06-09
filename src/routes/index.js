@@ -1,25 +1,25 @@
-import express from "express";
-import commentController from "../controllers/commentController.js";
-import recipeController from "../controllers/recipeController.js";
-import savedRecipeController from "../controllers/savedRecipesController.js";
-import userController from "../controllers/userController.js";
-import {
+const express = require("express");
+const commentController = require("../controllers/commentController.js");
+const recipeController = require("../controllers/recipeController.js");
+const savedRecipeController = require("../controllers/savedRecipesController.js");
+const userController = require("../controllers/userController.js");
+const {
   registerSchema,
   loginSchema,
   resetPasswordSchema,
   addRecipeSchema,
   addCommentSchema,
   changePasswordSchema,
-} from "../helper/validationScema.js";
-import { validate } from "../middleware/validation.js";
-import {
+} = require("../helper/validationScema.js");
+const { validate } = require("../middleware/validation.js");
+const {
   verifyToken,
   isAdmin,
   isUser,
   isOwner,
-} from "../middleware/verifyToken.js";
-import { uploadImages } from "../middleware/uploadImage.js";
-import checkRedis from "../middleware/redisCache.js";
+} = require("../middleware/verifyToken.js");
+const { uploadImages } = require("../middleware/uploadImage.js");
+const checkRedis = require("../middleware/redisCache.js");
 
 const {
   register,

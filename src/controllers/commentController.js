@@ -1,6 +1,6 @@
-import commentModel from "../models/commentModel.js";
-import jwt from "jsonwebtoken";
-import { responseAPI } from "../helper/responseFormatter.js";
+const commentModel = require("../models/commentModel.js");
+const jwt = require("jsonwebtoken");
+const { responseAPI } = require("../helper/responseFormatter.js");
 
 const { create, fetchByRecipeId, fetchAll } = commentModel;
 
