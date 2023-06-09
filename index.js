@@ -1,10 +1,10 @@
-import bodyParser from "body-parser";
-import express from "express";
-import dotenv from "dotenv";
-import router from "./src/routes/index.js";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import helmet from "helmet";
+const bodyParser = require("body-parser");
+const express = require("express");
+const dotenv = require("dotenv");
+const router = require("./src/routes/index.js");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 dotenv.config();
 
 const app = express();
