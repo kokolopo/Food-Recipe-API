@@ -64,11 +64,14 @@
 
 ### Built With
 This app was built with some technologies below:
-* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS?retiredLocale=id)
-* [Javascript](https://www.javascript.com/)
-* [React](https://vuejs.org/v2)
-* [Axios](https://axios-http.com/)
-* [Redux](https://redux.js.org/)
+* [NodeJS](https://nodejs.org/en)
+* [expressJS](https://expressjs.com/)
+* [JWT](https://jwt.io/)
+* [Minio](https://min.io/docs/minio/linux/developers/javascript/API.html)
+* [Multer](https://www.npmjs.com/package/multer)
+* [Mailjet](https://www.mailjet.com/)
+* [Postgresql](https://www.postgresql.org/)
+* [Redis](https://redis.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -125,31 +128,9 @@ S3_SECRET_KEY = [S3_SECRET_KEY]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## API Reference
+## API Documentation
 
-#### Get all items
-
-```http
-  GET /api/items
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
+[Documentation](/Food%20Recipes%20API.postman_collection.json)
       
 </p>
 
