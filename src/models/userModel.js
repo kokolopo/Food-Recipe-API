@@ -4,7 +4,7 @@ const userModel = {
   create: (uuid, name, email, phone, password) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `INSERT INTO food_recipes.users (uuid, name, email, phone, password, image_url, role) 
+        `INSERT INTO users (uuid, name, email, phone, password, image_url, role) 
           VALUES ('${uuid}', '${name}','${email}','${phone}','${password}','default', 'user')`,
         (err, result) => {
           if (err) reject(err);
@@ -17,7 +17,7 @@ const userModel = {
   findById: (id) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `SELECT * FROM food_recipes.users WHERE id = ${id}`,
+        `SELECT * FROM users WHERE id = ${id}`,
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows[0]);
@@ -29,7 +29,7 @@ const userModel = {
   findAll: () => {
     return new Promise((resolve, reject) => {
       DB.query(
-        "SELECT uuid, name, email, phone, image_url, role FROM food_recipes.users",
+        "SELECT uuid, name, email, phone, image_url, role FROM users",
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows);
@@ -41,7 +41,7 @@ const userModel = {
   findByEmail: (email) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `SELECT * FROM food_recipes.users WHERE email = '${email}'`,
+        `SELECT * FROM users WHERE email = '${email}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows[0]);
@@ -53,7 +53,7 @@ const userModel = {
   findByToken: (token) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `SELECT * FROM food_recipes.users WHERE refresh_token = '${token}'`,
+        `SELECT * FROM users WHERE refresh_token = '${token}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result.rows[0]);
@@ -65,7 +65,7 @@ const userModel = {
   updatePhoto: (refreshToken, imageUrl) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE food_recipes.users SET image_url = '${imageUrl}' WHERE refresh_token = '${refreshToken}'`,
+        `UPDATE users SET image_url = '${imageUrl}' WHERE refresh_token = '${refreshToken}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);
@@ -77,7 +77,7 @@ const userModel = {
   updatePassword: (id, newPassword) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE food_recipes.users SET password = '${newPassword}', updated_at = now() WHERE id = '${id}'`,
+        `UPDATE users SET password = '${newPassword}', updated_at = now() WHERE id = '${id}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);
@@ -89,7 +89,7 @@ const userModel = {
   updateProfile: (id, name, email, phone) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE food_recipes.users SET name = '${name}', email = '${email}', phone = '${phone}', updated_at = now() WHERE id = '${id}'`,
+        `UPDATE users SET name = '${name}', email = '${email}', phone = '${phone}', updated_at = now() WHERE id = '${id}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);
@@ -101,7 +101,7 @@ const userModel = {
   updateToken: (id, token) => {
     return new Promise((resolve, reject) => {
       DB.query(
-        `UPDATE food_recipes.users SET refresh_token = '${token}', updated_at = now() WHERE id = '${id}'`,
+        `UPDATE users SET refresh_token = '${token}', updated_at = now() WHERE id = '${id}'`,
         (err, result) => {
           if (err) reject(err);
           resolve(result);

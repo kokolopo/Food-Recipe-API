@@ -4,7 +4,7 @@ FROM node:slim
 WORKDIR /app
 
 # Salin package.json dan package-lock.json ke direktori app
-COPY package*.json package-lock.json ./
+COPY package*. ./
 # Install dependensi dari package.json
 RUN npm install
 # RUN npm install bcrypt --build-from-source

@@ -19,7 +19,7 @@ import {
   isOwner,
 } from "../middleware/verifyToken.js";
 import { uploadImages } from "../middleware/uploadImage.js";
-import checkRedis from "../middleware/redisCache.js";
+// import checkRedis from "../middleware/redisCache.js";
 
 const {
   register,
@@ -51,7 +51,8 @@ const router = express.Router();
 router.post("/save", uploadImages.single("image"), save);
 
 // redis
-router.get("/users/:id", checkRedis, isAdmin, findById);
+// router.get("/users/:id", checkRedis, isAdmin, findById);
+router.get("/users/:id", isAdmin, findById);
 
 // user & auth
 router.get("/users", isAdmin, listUsers);

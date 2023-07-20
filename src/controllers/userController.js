@@ -14,7 +14,7 @@ import {
   removeFile,
 } from "../helper/objectStorage.js";
 import recipeModel from "../models/recipeModel.js";
-import client from "../config/redis.js";
+// import client from "../config/redis.js";
 
 const {
   create,
@@ -226,10 +226,10 @@ const userController = {
     const id = req.params.id;
     findById(id)
       .then((result) => {
-        const dataRedis = client.set(`${req.url}`, JSON.stringify(result), {
-          EX: 180,
-          NX: true,
-        });
+        // const dataRedis = client.set(`${req.url}`, JSON.stringify(result), {
+        //   EX: 180,
+        //   NX: true,
+        // });
         res.send({
           fromCache: false,
           data: result,
