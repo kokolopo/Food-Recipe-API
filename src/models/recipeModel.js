@@ -46,7 +46,7 @@ const recipeModel = {
         WHERE r.id = ${recipe_id}`,
         (err, result) => {
           if (err) reject(err);
-          resolve(result.rows[0]);
+          resolve(result.rows);
         }
       );
     });

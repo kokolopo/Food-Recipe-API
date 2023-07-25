@@ -18,7 +18,7 @@ const commentModel = {
       DB.query(
         `SELECT k.*, u.name
         FROM comments k
-        LEFT JOIN users u ON k.user_id = U.id
+        LEFT JOIN users u ON k.user_id = u.id
         where recipe_id = ${recipe_id}`,
         (err, result) => {
           if (err) reject(err);

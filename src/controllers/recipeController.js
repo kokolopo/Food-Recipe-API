@@ -76,10 +76,10 @@ const recipeController = {
   recipe: async (req, res) => {
     const { recipe_id } = req.params;
     try {
-      const recipe = await fetchById(recipe_id);
-      const komentar = await commentModel.fetchByRecipeId(recipe_id);
+      const recipe = await fetchById(parseInt(recipe_id));
+      const komentar = await commentModel.fetchByRecipeId(parseInt(recipe_id));
       const cmnts = commentsFormatter(komentar);
-      const data = recipeFormatter(recipe, cmnts);
+      const data = recipeFormatter(recipe[0], cmnts)
       if (!recipe) {
         res.status(404).json(responseAPI("data tidak ditemukan", data));
       } else {
@@ -107,7 +107,7 @@ const recipeController = {
         .status(202)
         .json(responseAPI("berhasil memperbaharui resep", req.body));
     } catch (error) {
-      res.status(400).json({ msg: "gagal tambah resep!", error });
+      res.status(400).json({ msg: "gagal update resep!", error });
     }
   },
 

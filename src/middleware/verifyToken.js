@@ -40,14 +40,15 @@ export const isUser = (req, res, next) => {
 };
 
 export const isOwner = (req, res, next) => {
-  const token = req.headers["authorization"].split(" ")[1];
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
 
   recipeModel
     .fetchById(req.params.recipe_id)
     .then((result) => {
       jwt.verify(token, process.env.ACCESS_TOKEN, (err, decoded) => {
         if (err) return res.sendStatus(403);
-        if (decoded.id !== result.user_id) {
+        if (decoded.id !== result[0].user_id) {
           return res.sendStatus(403);
         }
 
